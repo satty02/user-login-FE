@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-container {
+    width: 1440px;
+    height: 900px;
+    display: flex;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #054B91 0%, #2D99C7 43.23%, #39B0D7 56.42%, #3DB9DD 61.1%, #3EBADE 61.11%, #41C0E2 64.24%, #31BDDE 71.01%, #31BEDE 71.02%, #32C1E0 81.94%, #3BB8E4 86.98%, #53A0EC 100%);
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 656px;
+    height: 469px;
+    margin-top: 249px;
+    margin-left: 112px;
+}
+
+.sign-header {
+    align-self: stretch;
+    height: 74px;
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40.41px;
+    opacity: 0.8999999761581421;
+    letter-spacing: -1.6px;
+}
+
+.common-container {
+    display: flex;
+    margin: 16px 0px 16px 0px;
+    padding: 12px 16px 0px 16px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid #EBEBEB;
+    background-color: #FFFFFF;
+}
+
+.common-label {
+    position: absolute;
+    cursor: text;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    opacity: 0.8999999761581421;
+    color: #9C9C9C;
+}
+
+input {
+    background: transparent;
+    height: 36px;
+    outline: none;
+    font-size: 16px;
+}
+
+.error-msg {
+    position:absolute;
+    width: 249px;
+    margin-left: 14px;
+    color: #E21E1E;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 11px;
+    height: 13px;
+}
+
+.success-alert {
+    display: flex;
+    width: 500px;
+    height: 72px;
+    padding: 16px;
+    gap: 42px;
+    align-items: center;
+    border-radius: 16px;
+    background-color: #FBFBFB;
+    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.08), 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+
+}
