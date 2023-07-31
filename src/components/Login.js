@@ -23,7 +23,7 @@ function Login() {
      const [errorMessagePassword, setErrorMessagePassword] = useState('');
      const [errorMessageDob, setErrorMessageDob] = useState('');
     
-     const [successMessage, setSuccessMessage] = useState(true);
+     const [successMessage, setSuccessMessage] = useState(false);
 
 
     const handleLogin = async (e) => {
