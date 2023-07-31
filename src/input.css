@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .main-container {
     width: 1440px;
@@ -81,4 +82,8 @@ input {
     background-color: #FBFBFB;
     box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.08), 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
 
+}
+
+.logo-text{
+    font-family: 'Bebas Neue', sans-serif;
 }

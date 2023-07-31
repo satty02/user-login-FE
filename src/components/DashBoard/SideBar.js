@@ -13,11 +13,12 @@ import Manual from './asset/Manual.png';
 import Rules from './asset/Rules.png';
 import Reports from './asset/Reports.png';
 import city from './asset/city.png';
+import image2 from '../../images/logo2.png'
 
 
 const Sidebar = () => {
   return (
-    <div className="border w-[256px] h-[828px] p-[16px] ">
+    <div className="border w-[256px] h-[828px] p-[16px] bg-[#FBFBFB] ">
       <ul>
         <li className="cursor-pointer  w-[224] h-[44px] py-[12px] px-[8px]">
             <div className='flex gap-[12px]'>
@@ -105,7 +106,17 @@ const Sidebar = () => {
         </li>
         
       </ul>
-    </div>
+                <div className=' mt-[118px] w-[224px] h-[26px] gap-[12px] flex'>
+                    <img src={image2}
+                        className='w-[39px] h-[41px] flex-shrink-[0]'
+                        alt='company-logo'/>
+                    <div className='flex flex-col items-start w-[158px] h-[31px]  mt-[3px] gap-[4px]'>
+                        <p className='flex items-center text-[#131313] h-[12px] font-Inter text-[10px] not-italic font-[400] leading-normal tracking-[-0.1px] opacity-[0.5] '>Developed by</p>
+                        <p className='flex items-center w-[158px] h-[15px] font-Inter text-[12px] font-[500] leading-normal tracking-[-0.48px] text-left text-[#3E3C3C] '>QualyTrust IT Services, India</p>
+                    </div>
+                </div>
+      </div>
+
   );
 };
 

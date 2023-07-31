@@ -1,12 +1,21 @@
-import Sidebar from "./components/DashBoard/SideBar";
+import DashBoard from "./components/DashBoard/DashBoard";
 import Login from "./components/Login";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="container">
-        {/* <Login/> */}
-        <Sidebar/>
-    </div>
+    <>
+    <Router>
+      <Routes>
+        <Route exact path="/" Component={Login}/>
+        <Route exact path="/user" Component={DashBoard}/>
+      </Routes>
+    </Router>
+     
+    </>
+    
+    
   );
 }
 
