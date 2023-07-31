@@ -23,7 +23,7 @@ function Login() {
      const [errorMessagePassword, setErrorMessagePassword] = useState('');
      const [errorMessageDob, setErrorMessageDob] = useState('');
     
-     const [successMessage, setSuccessMessage] = useState(false);
+     const [successMessage, setSuccessMessage] = useState(true);
 
 
     const handleLogin = async (e) => {
@@ -193,7 +193,7 @@ function Login() {
 
                     {/* SUCCESS NOTIFICATION */}
                 {    successMessage &&
-                 <div className='success-alert ml-[-1200px] mt-[617px]'>
+                 <div className='success-alert ml-[-420px] mt-[767px]'>
                     <img src={check_circle} className='w-[40px] h-[40px]' alt='check circle'/>
                     <p className='flex flex-col  justify-center  text-[20px] h-[24px] w-[308px] text-[#000] font-inter not-italic font-[500] leading-[119.523%] opacity-[0.8999999761581421]'>Welcome {name} </p>
                     <button onClick={handleSuccess} className="relative w-[32px] h-[32px] overflow-hidden">
