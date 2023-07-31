@@ -49,7 +49,7 @@ describe('Login Component', () => {
     fireEvent.click(screen.getByText('Sign in'));
 
     // Assert that the API is called with the correct data
-    expect(axios.post).toHaveBeenCalledWith('http://localhost:5000/api/login', {
+    expect(axios.post).toHaveBeenCalledWith('http://user-login-be.vercel.app/api/login', {
       username: 'john@example.com',
       password: 'secret123',
       dob: '2023-07-31T00:00',
