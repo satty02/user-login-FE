@@ -87,7 +87,9 @@ function Login() {
 
     return (
         <>
-            <section class="main-container">
+            <section class="main-container 2xl:w-full">
+
+                {/* company logo */}
                 <div className=' ml-[36px] mt-[825px] w-[267px] h-[55px] gap-[8px] flex'>
                     <img src={image2}
                         className=''
@@ -98,12 +100,10 @@ function Login() {
                     </div>
                 </div>
 
-            
+            {/* Logo */}
+                <img src={image1} alt='logo' className='w-[368px] h-[322px] mt-[295px] ml-[-151px]'/>
 
-
-                <img src={image1}
-                    alt='logo'
-                    className='w-[368px] h-[322px] mt-[295px] ml-[-151px]'/>
+            {/* Login form */}
                 <div class="form-container">
                     <div class=" rounded-[16px] p-[40px] gap-[16px] bg-[#FBFBFB] shadow-[0_1px_3px_0px_rgba(0,0,0,0.08)]">
                         <h1 class="sign-header font-inter">
