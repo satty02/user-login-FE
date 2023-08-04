@@ -26,6 +26,21 @@ function Login() {
      const [successMessage, setSuccessMessage] = useState(false);
 
 
+    const handleChange = (e)=>{
+        setUsername(e.target.value);
+        let arr_username = username.split(' ')
+        
+        if(arr_username.length===1){
+            setErrorMessageUsername('username should contains the spaces');
+
+        }else if(username.length>8){
+            setErrorMessageUsername('username is greater than 8')
+        }else{
+            setErrorMessageUsername('username is less than 8')
+        }
+    }
+
+
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -34,46 +49,53 @@ function Login() {
             return;
         }
         
-        try {
-            setErrorMessageUsername('');
-            setErrorMessagePassword('');
-            setErrorMessageDob('');
-            // Send the user login credentials to the API endpoint
-            const response = await axios.post('https://user-login-be.vercel.app/api/login', {
-              username,
-              password,
-              dob,
-            });
-
-            const {data} = response;
-
-
-            if (data.success){
-                // On successfull login display the success message
-
-                setName(data.result);
-                
-
-                setSuccessMessage('Login successful! Redirecting to Dashboard...');
-                setTimeout(()=> setSuccessMessage(''),5000);
-
-                setTimeout(()=>navigate(`/user`),5000)
-
-            }else {
-                if(data.message==='Email doesn’t exist'){
-                    setErrorMessageUsername('Email doesn’t exist')
-                }else if (data.message==='Password is not correct'){
-                    setErrorMessagePassword("Incorrect Password");
-                }else if(data.message==='Invalid date'){
-                    setErrorMessageDob('Invalid date')
+        
+        if (username.length<8){
+            setErrorMessageUsername('User name is greater than 8 chars , lets not call the API')
+        }else{
+            try {
+                setErrorMessageUsername('');
+                setErrorMessagePassword('');
+                setErrorMessageDob('');
+                // Send the user login credentials to the API endpoint
+                const response = await axios.post('https://user-login-be.vercel.app/api/login', {
+                  username,
+                  password,
+                  dob,
+                });
+    
+                const {data} = response;
+    
+    
+                if (data.success){
+                    // On successfull login display the success message
+    
+                    setName(data.result);
+                    
+    
+                    setSuccessMessage('Login successful! Redirecting to Dashboard...');
+                    setTimeout(()=> setSuccessMessage(''),5000);
+    
+                    setTimeout(()=>navigate(`/user`),5000)
+    
                 }else {
-                    alert('Invalid Credentials')
+                    if(data.message==='Email doesn’t exist'){
+                        setErrorMessageUsername('Email doesn’t exist')
+                    }else if (data.message==='Password is not correct'){
+                        setErrorMessagePassword("Incorrect Password");
+                    }else if(data.message==='Invalid date'){
+                        setErrorMessageDob('Invalid date')
+                    }else {
+                        alert('Invalid Credentials')
+                    }
+                    
                 }
-                
+            } catch (error){
+                console.error(error);
             }
-        } catch (error){
-            console.error(error);
         }
+
+        
     }
 
     const handleEye = (e) =>{
@@ -120,7 +142,7 @@ function Login() {
                                         id="username" 
                                         name="username" 
                                         className="peer  font-inter  w-[544px] text-[#000] placeholder-transparent" 
-                                        onChange={(e)=>setUsername(e.target.value)} 
+                                        onChange={handleChange} 
                                         value={username} 
                                         placeholder="User name"
                             
@@ -192,7 +214,7 @@ function Login() {
                 </div>
 
                     {/* SUCCESS NOTIFICATION */}
-                {    successMessage &&
+                {  successMessage &&
                  <div className='success-alert ml-[-420px] mt-[767px]'>
                     <img src={check_circle} className='w-[40px] h-[40px]' alt='check circle'/>
                     <p className='flex flex-col  justify-center  text-[20px] h-[24px] w-[308px] text-[#000] font-inter not-italic font-[500] leading-[119.523%] opacity-[0.8999999761581421]'>Welcome {name} </p>
