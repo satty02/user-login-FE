@@ -49,9 +49,8 @@ function Login() {
             return;
         }
         
-        
         if (username.length<8){
-            setErrorMessageUsername('User name is greater than 8 chars , lets not call the API')
+            setErrorMessageUsername('User name is less than 8 chars , lets not call the API')
         }else{
             try {
                 setErrorMessageUsername('');
