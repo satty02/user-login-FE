@@ -3,8 +3,12 @@
 
 This is a login Page where user needs to enter their username , password and DOB.
 On successful authentication from server side it navigates to dashboard page.
-The project utilizes several dependencies, including React.js, Tailwind CSS.
-
+The project utilizes several dependencies:
+<ul>
+  <li>React.js</li>
+  <li>Tailwind CSS</li>
+  <li>CSS</li>
+</ul>
 ## How to Run this application
 
 - clone this repository.
