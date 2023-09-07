@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import image1 from '../images/logo.png';
 import image2 from '../images/logo2.png';
@@ -7,9 +7,11 @@ import on_eye from '../images/remove_red_eye.png';
 import check_circle from '../images/check_circle.png'
 import close from '../images/close.png'
 import {useNavigate} from 'react-router-dom';
+import hasSpecialCharacter from './validation';
 
 function Login() {
 
+    // to navigate to dashboard page after authenticating;
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
@@ -22,36 +24,26 @@ function Login() {
      const [errorMessageUsername, setErrorMessageUsername] = useState('');
      const [errorMessagePassword, setErrorMessagePassword] = useState('');
      const [errorMessageDob, setErrorMessageDob] = useState('');
-    
      const [successMessage, setSuccessMessage] = useState(false);
 
 
     const handleChange = (e)=>{
         setUsername(e.target.value);
-        let arr_username = username.split(' ')
-        
-        if(arr_username.length===1){
-            setErrorMessageUsername('username should contains the spaces');
+    }
 
-        }else if(username.length>8){
-            setErrorMessageUsername('username is greater than 8')
-        }else{
-            setErrorMessageUsername('username is less than 8')
-        }
+
+
+    const handlePassword =(e) =>{
+        setPassword(e.target.value);
     }
 
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
-        if (!username || !password || !dob) {
-            alert('Please fill in all the fields.');
+        if (!hasSpecialCharacter(password)) {
+            setErrorMessagePassword('Password should contain a special character');
             return;
-        }
-        
-        if (username.length<8){
-            setErrorMessageUsername('User name is less than 8 chars , lets not call the API')
-        }else{
+          }else {
             try {
                 setErrorMessageUsername('');
                 setErrorMessagePassword('');
@@ -79,7 +71,7 @@ function Login() {
     
                 }else {
                     if(data.message==='Email doesn’t exist'){
-                        setErrorMessageUsername('Email doesn’t exist')
+                        setErrorMessageUsername('Username doesn’t exist')
                     }else if (data.message==='Password is not correct'){
                         setErrorMessagePassword("Incorrect Password");
                     }else if(data.message==='Invalid date'){
@@ -144,7 +136,7 @@ function Login() {
                                         onChange={handleChange} 
                                         value={username} 
                                         placeholder="User name"
-                            
+                                        required
                                     />
                                     <label htmlFor="username" className={`common-label font-inter left-0 -top-2 text-[12px] text-[#ECECEC] bg-inherit peer-placeholder-shown:text-[16px] peer-placeholder-shown:top-0 peer-focus:-top-2 peer-focus:text-[12px] peer-focus:h-[15px] transition-all`}>User name</label>
                                 </div>
@@ -161,7 +153,9 @@ function Login() {
                                         name="password" 
                                         className=" font-inter peer  w-[516px] placeholder-transparent"  
                                         placeholder="Password"
-                                        onChange={(e)=>setPassword(e.target.value)}
+                                        onChange={handlePassword}
+                                        value={password}
+                                        required
                                     />
                                     <label for="password" className={`common-label font-inter left-0 -top-2 text-[12px] text-[#ECECEC] bg-inherit peer-placeholder-shown:text-[16px] peer-placeholder-shown:top-0 peer-focus:-top-2 peer-focus:text-[12px] peer-focus:h-[15px] transition-all`}>Password</label>
                                 </div>
@@ -185,7 +179,7 @@ function Login() {
                                         name="Date of birth" 
                                         className={`peer font-inter w-[544px] ${dob?'':'text-[white]'}  placeholder-transparent focus:text-[#000]`}    
                                         onChange={(e)=>setDob(e.target.value)}
-                                        
+                                        required
                                     />
                                     <label htmlFor="Date of birth" className={`common-label font-inter ${dob?'left-0 -top-2 text-[12px]':"left-0 top-1 text-[15px]"}  text-[#ECECEC] bg-inherit peer-placeholder-shown:text-[16px] peer-placeholder-shown:top-0 peer-focus:-top-2 peer-focus:text-[12px] peer-focus:h-[15px] transition-all`}>Date of birth</label>
                                 </div>
