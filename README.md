@@ -19,4 +19,4 @@ The project utilizes several dependencies:
 - enter this credential,
  username - satish.pal.2996@gmail.com
  password - Satish@123
- DOB - 29/06/1996 11:00:00 AM
+ DOB - 29/june/1996 11:00:00 AM
